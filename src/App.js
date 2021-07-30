@@ -31,6 +31,7 @@ function App() {
     "y",
     "z",
   ]);
+
   const [cipherAlphabet, setCipherAlphabet] = useState([
     "a",
     "b",
@@ -68,9 +69,9 @@ function App() {
     e.preventDefault();
     if (shift < 26) {
       const target = cipherAlphabet[cipherAlphabet.length - 1]; // Selecting the last element in the array
-      cipherAlphabet.pop();
-      cipherAlphabet.unshift(target);
-      setShift(shift + 1);
+      cipherAlphabet.pop(); // Remove a letter from the end of an array
+      cipherAlphabet.unshift(target); // Add the target letter to the beginning of an array
+      setShift(shift + 1); // Increment shift by one
     } else {
       console.log("Cannot go past 26");
     }
@@ -80,29 +81,32 @@ function App() {
     e.preventDefault();
     if (shift > -26) {
       const target = cipherAlphabet[0]; // Selecting the first element in the array
-      cipherAlphabet.shift();
-      cipherAlphabet.push(target);
-      setShift(shift - 1);
+      cipherAlphabet.shift(); // Remove an item from the beginning of an array
+      cipherAlphabet.push(target); // Add target letter to the end of an array
+      setShift(shift - 1); // Decrement shift by one
     } else {
       console.log("Cannot go past -26");
     }
   };
 
   const handlePlainText = () => {
-    const plainTextArray = plainText.split("");
-    const cipherTextArray = plainTextArray.map((ltr) => test(ltr.toLowerCase()));
-    setCipherText(cipherTextArray.join(""));
+    const plainTextArray = plainText.split(""); // Splitting plainText into an array
+    const cipherTextArray = plainTextArray.map((ltr) => convertToCipher(ltr.toLowerCase())); // Get the letters from plainTextArray and shift each individual letter
+    setCipherText(cipherTextArray.join("")); // Setting ciperTextArray joined into a string as cipherText
   };
 
-  const test = (letter) => {
-    if (alphabet.includes(letter)) {
-      const plainIdx = alphabet.indexOf(letter);
-      return cipherAlphabet[plainIdx];
+  const convertToCipher = (character) => {
+    // if the alphabet includes the character
+    if (alphabet.includes(character)) {
+      const plainIdx = alphabet.indexOf(character); // then get the index of the character in the alphabet
+      return cipherAlphabet[plainIdx]; // and return the character with the same index in shifted cipherAlphabet
     } else {
-      return letter;
+      // if the condition fails
+      return character; // return the character
     }
   };
 
+  // Run the handlePlainText function every time plainText changes states
   useEffect(() => {
     handlePlainText();
   }, [plainText]);
@@ -130,8 +134,9 @@ function App() {
         </div>
       </section>
 
-      <section className="col-6 mx-auto mt-4 pt-2">
+      <section className="col-6 mx-auto mt-4 ">
         <div className="d-grid gap-2">
+          <h6 className="text-center p-0 m-0">key</h6>
           <section className="row justify-content-center ">
             <div className="col text-end my-auto">
               <button className="btn btn-primary px-4" type="button" onClick={handleShiftMinus}>
@@ -157,7 +162,7 @@ function App() {
           <label htmlFor="cypherText" className="form-label">
             Cipher Text
           </label>
-          <textarea className="form-control" id="cypherText" placeholder={cipherText} rows="7"></textarea>
+          <textarea className="form-control" id="cypherText" value={cipherText} rows="7"></textarea>
         </div>
       </section>
     </header>
