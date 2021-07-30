@@ -64,6 +64,13 @@ function App() {
     }
   };
 
+  const handlePlainText = (e) => {
+    e.preventDefault();
+    setPlainText(e.target.value);
+  };
+
+  console.log(plainText);
+
   return (
     <header className="container text-white">
       <section className="row">
@@ -76,7 +83,7 @@ function App() {
           <label htmlFor="plainText" className="form-label">
             Plain Text
           </label>
-          <textarea className="form-control" id="plainText" rows="4"></textarea>
+          <textarea className="form-control" id="plainText" rows="4" onChange={handlePlainText}></textarea>
         </div>
       </section>
 
