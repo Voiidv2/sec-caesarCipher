@@ -31,19 +31,47 @@ function App() {
     "y",
     "z",
   ]);
+  const [cipherAlphabet, setCipherAlphabet] = useState([
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+  ]);
 
   const [shift, setShift] = useState(0);
-  const [cypherText, setCypherText] = useState("");
+  const [cipherText, setCipherText] = useState("");
   const [plainText, setPlainText] = useState("");
 
   const handleShiftPlus = (e) => {
     e.preventDefault();
     if (shift < 26) {
       console.log("Shifting...");
-      const target = alphabet[alphabet.length - 1];
-      alphabet.pop();
-      alphabet.unshift(target);
-      console.log(alphabet);
+      const target = cipherAlphabet[cipherAlphabet.length - 1];
+      cipherAlphabet.pop();
+      cipherAlphabet.unshift(target);
+      console.log(cipherAlphabet);
       setShift(shift + 1);
     } else {
       console.log("Cannot go past 26");
@@ -54,10 +82,10 @@ function App() {
     e.preventDefault();
     if (shift > -26) {
       console.log("Shifting...");
-      const target = alphabet[0];
-      alphabet.shift();
-      alphabet.push(target);
-      console.log(alphabet);
+      const target = cipherAlphabet[0];
+      cipherAlphabet.shift();
+      cipherAlphabet.push(target);
+      console.log(cipherAlphabet);
       setShift(shift - 1);
     } else {
       console.log("Cannot go past -26");
@@ -67,9 +95,34 @@ function App() {
   const handlePlainText = (e) => {
     e.preventDefault();
     setPlainText(e.target.value);
+    shiftPlainText();
   };
 
-  console.log(plainText);
+  const handleCipherText = (e) => {
+    e.preventDefault();
+    setCipherText(e.target.value);
+    shiftCipherText();
+  };
+
+  const shiftPlainText = () => {
+    const splitArray = plainText.split("");
+    const mapping = splitArray.map((ltr) => test(ltr.toLowerCase()));
+    setCipherText(mapping.join(""));
+  };
+
+  const test = (letter) => {
+    if (alphabet.includes(letter)) {
+      const plainIdx = alphabet.indexOf(letter);
+      return cipherAlphabet[plainIdx];
+    } else {
+      return letter;
+    }
+  };
+  const shiftCipherText = () => {
+    const shiftText = cipherText.split("");
+    const test = shiftText.map((letter) => letter);
+    console.log(test);
+  };
 
   return (
     <header className="container text-white">
@@ -83,11 +136,18 @@ function App() {
           <label htmlFor="plainText" className="form-label">
             Plain Text
           </label>
-          <textarea className="form-control" id="plainText" rows="4" onChange={handlePlainText}></textarea>
+          <textarea
+            className="form-control"
+            id="plainText"
+            rows="7"
+            placeholder={plainText}
+            onChange={handlePlainText}
+            autoFocus
+          ></textarea>
         </div>
       </section>
 
-      <section className="col-6 mx-auto my-5">
+      <section className="col-6 mx-auto mt-4 pt-2">
         <div className="d-grid gap-2">
           <section className="row justify-content-center ">
             <div className="col text-end my-auto">
@@ -104,8 +164,8 @@ function App() {
               </button>
             </div>
           </section>
-          <button className="btn btn-primary">Encrypt</button>
-          <button className="btn btn-primary">Decrypt</button>
+          {/* <button className="btn btn-primary">Encrypt</button>
+          <button className="btn btn-primary">Decrypt</button> */}
         </div>
       </section>
 
@@ -114,7 +174,13 @@ function App() {
           <label htmlFor="cypherText" className="form-label">
             Cipher Text
           </label>
-          <textarea className="form-control" id="cypherText" rows="4"></textarea>
+          <textarea
+            className="form-control"
+            id="cypherText"
+            placeholder={cipherText}
+            onChange={handleCipherText}
+            rows="7"
+          ></textarea>
         </div>
       </section>
     </header>
