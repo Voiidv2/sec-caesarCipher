@@ -7,6 +7,16 @@ function App() {
   const [cypherText, setCypherText] = useState("");
   const [plainText, setPlainText] = useState("");
 
+  const handleShiftPlus = (e) => {
+    e.preventDefault();
+    setShift(shift + 1);
+  };
+
+  const handleShiftMinus = (e) => {
+    e.preventDefault();
+    setShift(shift - 1);
+  };
+
   return (
     <header className="container text-white">
       <section className="row">
@@ -27,7 +37,7 @@ function App() {
         <div className="d-grid gap-2">
           <section className="row justify-content-center ">
             <div class="col text-end my-auto">
-              <button class="btn btn-primary px-4" type="button">
+              <button class="btn btn-primary px-4" type="button" onClick={handleShiftMinus}>
                 -
               </button>
             </div>
@@ -35,7 +45,7 @@ function App() {
               <h3>{shift}</h3>
             </div>
             <div class="col text-start my-auto">
-              <button class="btn btn-primary px-4" type="button">
+              <button class="btn btn-primary px-4" type="button" onClick={handleShiftPlus}>
                 +
               </button>
             </div>
