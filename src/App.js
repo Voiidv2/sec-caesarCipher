@@ -67,11 +67,9 @@ function App() {
   const handleShiftPlus = (e) => {
     e.preventDefault();
     if (shift < 26) {
-      console.log("Shifting...");
-      const target = cipherAlphabet[cipherAlphabet.length - 1];
+      const target = cipherAlphabet[cipherAlphabet.length - 1]; // Selecting the last element in the array
       cipherAlphabet.pop();
       cipherAlphabet.unshift(target);
-      console.log(cipherAlphabet);
       setShift(shift + 1);
     } else {
       console.log("Cannot go past 26");
@@ -81,33 +79,19 @@ function App() {
   const handleShiftMinus = (e) => {
     e.preventDefault();
     if (shift > -26) {
-      console.log("Shifting...");
-      const target = cipherAlphabet[0];
+      const target = cipherAlphabet[0]; // Selecting the first element in the array
       cipherAlphabet.shift();
       cipherAlphabet.push(target);
-      console.log(cipherAlphabet);
       setShift(shift - 1);
     } else {
       console.log("Cannot go past -26");
     }
   };
 
-  const handlePlainText = (e) => {
-    e.preventDefault();
-    setPlainText(e.target.value);
-    shiftPlainText();
-  };
-
-  const handleCipherText = (e) => {
-    e.preventDefault();
-    setCipherText(e.target.value);
-    shiftCipherText();
-  };
-
-  const shiftPlainText = () => {
-    const splitArray = plainText.split("");
-    const mapping = splitArray.map((ltr) => test(ltr.toLowerCase()));
-    setCipherText(mapping.join(""));
+  const handlePlainText = () => {
+    const plainTextArray = plainText.split("");
+    const cipherTextArray = plainTextArray.map((ltr) => test(ltr.toLowerCase()));
+    setCipherText(cipherTextArray.join(""));
   };
 
   const test = (letter) => {
@@ -118,11 +102,10 @@ function App() {
       return letter;
     }
   };
-  const shiftCipherText = () => {
-    const shiftText = cipherText.split("");
-    const test = shiftText.map((letter) => letter);
-    console.log(test);
-  };
+
+  useEffect(() => {
+    handlePlainText();
+  }, [plainText]);
 
   return (
     <header className="container text-white">
@@ -141,7 +124,7 @@ function App() {
             id="plainText"
             rows="7"
             placeholder={plainText}
-            onChange={handlePlainText}
+            onChange={(e) => setPlainText(e.target.value)}
             autoFocus
           ></textarea>
         </div>
@@ -174,13 +157,7 @@ function App() {
           <label htmlFor="cypherText" className="form-label">
             Cipher Text
           </label>
-          <textarea
-            className="form-control"
-            id="cypherText"
-            placeholder={cipherText}
-            onChange={handleCipherText}
-            rows="7"
-          ></textarea>
+          <textarea className="form-control" id="cypherText" placeholder={cipherText} rows="7"></textarea>
         </div>
       </section>
     </header>
