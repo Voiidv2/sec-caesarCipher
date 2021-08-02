@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+<!-- ABOUT THE PROJECT -->
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About The Project
 
-## Available Scripts
+[![Product Name Screen Shot][product-screenshot]](https://github.com/Voiidv2/sec-caesarCipher)
 
-In the project directory, you can run:
+This project was started to have a better understanding of one of the most widely known encryption methods known as Caesar's cipher. There are two fields, and a counter in the middle where you select the key. Once you start entering text into the 'Plain Text' field, it will show the encrypted text in the 'Cipher Text' field.
 
-### `npm start`
+### Built With
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+React was used in order to make it easy to build the interface thanks to React being component-based and during this time I was also learning React.
+Bootstrap was used for the styling as it is easy to use and makes development of the front end very quick.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- [React](https://reactjs.org/)
+- [Bootstrap](https://getbootstrap.com)
 
-### `npm test`
+<!-- GETTING STARTED -->
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `npm run build`
+In order to get started with the project you'll need to have NPM. To get the project running locally, follow these simple steps.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- npm
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  ```sh
+  npm install npm@latest -g
+  ```
 
-### `npm run eject`
+### Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. Clone the repo
+   ```sh
+   git clone https://github.com/Voiidv2/wowRecipeTracker.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<!-- ACKNOWLEDGEMENTS -->
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Acknowledgements
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- [Bootstrap](https://getbootstrap.com/)
 
-## Learn More
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[product-screenshot]: images/screenshot.png
