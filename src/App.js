@@ -106,10 +106,32 @@ function App() {
     }
   };
 
+  const handleCipher = () => {
+    const cipherTextArray = cipherText.split(""); // Splitting cipherTextArray into an array
+    const plainTextArray = cipherTextArray.map((ltr) => convertToPlain(ltr.toLowerCase())); // Get the letters from cipherTextArray and shift each individual letter
+    setPlainText(plainTextArray.join("")); // Setting plainTextArray joined into a string as cipherText
+  };
+
+  const convertToPlain = (character) => {
+    // if the alphabet includes the character
+    if (alphabet.includes(character)) {
+      const cipherIdx = alphabet.indexOf(character); // then get the index of the character in the alphabet
+      return alphabet[cipherIdx]; // and return the character with the same index in shifted cipherAlphabet
+    } else {
+      // if the condition fails
+      return character; // return the character
+    }
+  };
+
   // Run the handlePlainText function every time plainText changes states
   useEffect(() => {
     handlePlainText();
   }, [plainText]);
+
+  // Run the handlePlainText function every time plainText changes states
+  // useEffect(() => {
+  //   handleCipher();
+  // }, [cipherText]);
 
   return (
     <header className="container text-white">
@@ -128,8 +150,22 @@ function App() {
             className="form-control"
             id="plainText"
             rows="7"
-            placeholder={plainText}
+            // defaultValue={plainText}
             onChange={(e) => setPlainText(e.target.value)}
+            autoFocus
+          ></textarea>
+        </div>
+
+        <div className="col-6 mx-auto">
+          <label htmlFor="plainText" className="form-label">
+            Cipher Text
+          </label>
+          <textarea
+            className="form-control"
+            id="plainText"
+            rows="7"
+            // defaultValue={plainText}
+            onChange={(e) => setCipherText(e.target.value)}
             autoFocus
           ></textarea>
         </div>
@@ -161,7 +197,26 @@ function App() {
           <label htmlFor="cypherText" className="form-label">
             Cipher Text
           </label>
-          <textarea className="form-control" id="cypherText" value={cipherText} rows="7"></textarea>
+          <textarea
+            className="form-control"
+            id="cypherText"
+            value={cipherText}
+            rows="7"
+            // onChange={(e) => setCipherText(e.target.value)}
+          ></textarea>
+        </div>
+
+        <div className="col-6 mx-auto p-2">
+          <label htmlFor="cypherText" className="form-label">
+            Plain Text
+          </label>
+          <textarea
+            className="form-control"
+            id="cypherText"
+            value={plainText}
+            rows="7"
+            // onChange={(e) => setCipherText(e.target.value)}
+          ></textarea>
         </div>
       </section>
     </header>
