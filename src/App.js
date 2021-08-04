@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 function App() {
   const [alphabet, setAlphabet] = useState([
     "a",
@@ -118,6 +119,7 @@ function App() {
     }, [plainText]);
     return (
       <>
+        <h4 className="text-center">Encrypt</h4>
         <section className="row">
           <div className="col-6 mx-auto">
             <label htmlFor="plainText" className="form-label">
@@ -244,15 +246,22 @@ function App() {
   };
 
   return (
-    <header className="container text-white">
-      <section className="row mt-3">
-        <div className="col text-center">
-          <h1>Caesar Cipher</h1>
-        </div>
-      </section>
-      <Encrypt handleShiftPlus={handleShiftPlus} handleShiftMinus={handleShiftMinus} />
-      <Decrypt handleShiftPlus={handleShiftPlus} handleShiftMinus={handleShiftMinus} />
-    </header>
+    <Router>
+      <header className="container text-white">
+        <section className="row mt-3">
+          <div className="col text-center">
+            <h1>Caesar Cipher</h1>
+          </div>
+        </section>
+        {/* <Encrypt handleShiftPlus={handleShiftPlus} handleShiftMinus={handleShiftMinus} /> */}
+        {/* <Decrypt handleShiftPlus={handleShiftPlus} handleShiftMinus={handleShiftMinus} /> */}
+      </header>
+
+      <Switch>
+        <Route path="/encrypt" component={Encrypt} />
+        <Route path="/decrypt" component={Decrypt} />
+      </Switch>
+    </Router>
   );
 }
 
