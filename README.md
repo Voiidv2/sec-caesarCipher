@@ -44,6 +44,7 @@ In order to get started with the project you'll need to have NPM. To get the pro
 ## Acknowledgements
 
 - [Bootstrap](https://getbootstrap.com/)
+- [React Router](https://reactrouter.com/)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
