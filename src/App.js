@@ -118,7 +118,7 @@ function App() {
       handlePlainText();
     }, [plainText]);
     return (
-      <>
+      <div className="text-white my-5">
         <h4 className="text-center">Encrypt</h4>
         <section className="row">
           <div className="col-6 mx-auto">
@@ -165,7 +165,7 @@ function App() {
             <textarea className="form-control" id="cypherText" value={cipherText} rows="7" readOnly></textarea>
           </div>
         </section>
-      </>
+      </div>
     );
   };
 
@@ -196,7 +196,8 @@ function App() {
     }, [cipherText]);
 
     return (
-      <>
+      <div className="text-white my-5">
+        <h4 className="text-center">Decrypt</h4>
         <section className="row">
           <div className="col-6 mx-auto">
             <label htmlFor="plainText" className="form-label">
@@ -241,7 +242,7 @@ function App() {
             <textarea className="form-control" id="cypherText" value={plainText} rows="7" readOnly></textarea>
           </div>
         </section>
-      </>
+      </div>
     );
   };
 
@@ -253,13 +254,27 @@ function App() {
             <h1>Caesar Cipher</h1>
           </div>
         </section>
+        <nav className="nav justify-content-center">
+          <Link className="nav-link" to="/encrypt">
+            Encrypt
+          </Link>
+          <Link className="nav-link" to="/decrypt">
+            Decrypt
+          </Link>
+        </nav>
         {/* <Encrypt handleShiftPlus={handleShiftPlus} handleShiftMinus={handleShiftMinus} /> */}
         {/* <Decrypt handleShiftPlus={handleShiftPlus} handleShiftMinus={handleShiftMinus} /> */}
       </header>
 
       <Switch>
-        <Route path="/encrypt" component={Encrypt} />
-        <Route path="/decrypt" component={Decrypt} />
+        <Route
+          path="/encrypt"
+          render={() => <Encrypt handleShiftPlus={handleShiftPlus} handleShiftMinus={handleShiftMinus} />}
+        />
+        <Route
+          path="/decrypt"
+          render={() => <Decrypt handleShiftPlus={handleShiftPlus} handleShiftMinus={handleShiftMinus} />}
+        />
       </Switch>
     </Router>
   );
