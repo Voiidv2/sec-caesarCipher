@@ -32,7 +32,7 @@ In order to get started with the project you'll need to have NPM. To get the pro
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/Voiidv2/wowRecipeTracker.git
+   git clone https://github.com/Voiidv2/sec-caesarCipher.git
    ```
 2. Install NPM packages
    ```sh
